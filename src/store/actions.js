@@ -1,25 +1,31 @@
+// WEB3
 export function web3Loaded(connection) {
     return {
-        type: 'WEB3_LOADED',
-        connection
+      type: 'WEB3_LOADED',
+      connection
     }
-}
-export function web3AccountLoaded(account) {
+  }
+  
+  export function web3AccountLoaded(account) {
     return {
-        type: 'WEB3_ACCOUNT_LOADED',
-        account
+      type: 'WEB3_ACCOUNT_LOADED',
+      account
     }
-}
-export function tokenLoaded(token) {
+  }
+  
+  // TOKEN
+  export function tokenLoaded(contract) {
     return {
-        type: 'WEB3_TOKEN_LOADED',
-        token
+      type: 'TOKEN_LOADED',
+      contract
     }
-}
-
-export function exchangeLoaded(exchange) {
+  }
+  
+  // EXCHANGE
+  export function exchangeLoaded(contract) {
     return {
-        type: 'EXCHANGE_LOADED',
-        exchange
+      type: 'EXCHANGE_LOADED',
+      contract
     }
-}
+  }
+  
