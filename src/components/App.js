@@ -1,45 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import Web3 from 'web3';
+import { connect } from 'react-redux'
+import {loadWeb3, loadAccount, loadToken, loadExchange} from '../store/interactions'
 import Token from '../abis/Token.json'
 
-function App() {
-
+function App(dispatch) {
   const [currentAccount, setCurrentAccount] = useState("");
 
-  const fetchData = async () => {
-    const web3 = new Web3(window.ethereum)
-    const accounts = await web3.eth.getAccounts()
-    const abi = Token.abi
+  const fetchData = async (props) => {
+    const web3 = loadWeb3(props.dispatch)
+    const accounts = await loadAccount(web3, props.dispatch)
     const networkId = await web3.eth.net.getId()
-    const networkAddress = Token.networks[networkId].address
-    const token = new web3.eth.Contract(Token.abi, networkAddress)
-    const totalSupply = await token.methods.totalSupply().call()
-    console.log(totalSupply)
+    const token = await loadToken(web3, networkId, props.dispatch)
+    await loadExchange(web3, networkId, props.dispatch)
   }
-  const checkIfWalletIsConnected = async () => {
-    const { ethereum } = window;
-
-    if (!ethereum) {
-        console.log("Make sure you have metamask!");
-        return;
-    } else {
-        console.log("We have the ethereum object", ethereum);
-    }
-
-    const accounts = await ethereum.request({ method: 'eth_accounts' });
-
-    if (accounts.length !== 0) {
-        const account = accounts[0];
-        console.log("Found an authorized account:", account);
-        setCurrentAccount(account)
-    } else {
-        console.log("No authorized account found")
-    }
-}
 
   useEffect(()=> {
-    fetchData()
+    fetchData(dispatch)
   })
   return (
     <div>
@@ -130,4 +108,10 @@ function App() {
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps)(App);
