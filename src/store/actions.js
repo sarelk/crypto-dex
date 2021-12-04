@@ -50,6 +50,19 @@ export function allOrdersLoaded(allOrders) {
   }
 }
 
+export function orderCancelling(order) {
+  return {
+    type: 'ORDER_CANCELLING'
+  }
+}
+
+export function orderCancelled(order) {
+  return {
+    type: 'ORDER_CANCELLED',
+    order
+  }
+}
+
 
 
 

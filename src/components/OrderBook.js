@@ -34,7 +34,6 @@ const showOrderBook = (props) => {
 
 class OrderBook extends Component {
     render() {
-      console.log(this.props.orderBook)
     return (
       <div className="vertical">
         <div className="card bg-dark text-white">
