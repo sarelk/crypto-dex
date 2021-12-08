@@ -32,7 +32,6 @@ export const loadWeb3 = async (dispatch) => {
     return web3
   } else {
     window.alert('Please install MetaMask')
-    window.location.assign("https://metamask.io/")
   }
 }
 
