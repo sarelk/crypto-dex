@@ -1,12 +1,13 @@
 {
-  "name": "DCOIN",
+  "name": "dcoin",
   "version": "0.2.0",
   "description": "Decentralized Ethereum Token Exchange",
   "author": "sarelk@gmail.com",
   "private": true,
   "homepage": ".",
   "engines": {
-    "node": "8.11.1"
+    "node": "8.11.1",
+    "npm": "5.6.0"
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "1.1.0",
