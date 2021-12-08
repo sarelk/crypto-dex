@@ -4,6 +4,10 @@
   "description": "Decentralized Ethereum Token Exchange",
   "author": "sarelk@gmail.com",
   "private": true,
+  "homepage": ".",
+  "engines": {
+    "node": "8.11.1"
+  },
   "dependencies": {
     "@truffle/hdwallet-provider": "1.1.0",
     "apexcharts": "3.6.3",
