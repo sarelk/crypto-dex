@@ -26,14 +26,10 @@ import Exchange from '../abis/Exchange.json'
 import { ETHER_ADDRESS } from '../helpers'
 
 export const loadWeb3 = async (dispatch) => {
-  if(typeof window.ethereum!=='undefined'){
-    const web3 = new Web3(window.ethereum)
+  const web3 = (typeof window.ethereum!=='undefined') ? new Web3(window.ethereum) : new Web3(new Web3.providers.HttpProvider("https://kovan.infura.io/v3/918579991b7841cb8f4aab6ed8c55470"))
     dispatch(web3Loaded(web3))
     return web3
-  } else {
-    window.alert('Please install MetaMask')
   }
-}
 
 export const loadAccount = async (web3, dispatch) => {
   const accounts = await web3.eth.getAccounts()
@@ -42,7 +38,7 @@ export const loadAccount = async (web3, dispatch) => {
     dispatch(web3AccountLoaded(account))
     return account
   } else {
-    window.alert('Please login with MetaMask')
+    // window.alert('Please login with MetaMask')
     return null
   }
 }
@@ -157,7 +153,7 @@ export const loadBalances = async (dispatch, web3, exchange, token, account) => 
       // Trigger all balances loaded
       dispatch(balancesLoaded())
     } else {
-      window.alert('Please login with MetaMask')
+      // window.alert('Please login with MetaMask')
     }
 }
 

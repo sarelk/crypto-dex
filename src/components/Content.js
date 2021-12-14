@@ -17,7 +17,8 @@ class Content extends Component {
   async loadBlockchainData(props) {
     const { dispatch, exchange } = props
     await loadAllOrders(exchange, dispatch)
-    await subscribeToEvents(exchange, dispatch)
+    if (this.props.account)
+        await subscribeToEvents(exchange, dispatch)
   }
   render() {
     return (
